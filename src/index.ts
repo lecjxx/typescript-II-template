@@ -8,17 +8,28 @@ Crie um sistema de cadastro de usuários que contenha:
 
 
 
+enum Role{
+    ADMIN = "Admin",
+    NORMAL = "Normal"
+  }
 
+type Person = {
+    id: String,
+    name: string,
+    email: string,
+    password: string,
+    role: Role
+  }
 
-
-
-
-
-
-
-
-
-
+  type AdminAccount = {
+    account: string | number,
+    permission: boolean
+  }
+  
+  type NormalAccount = {
+    account: string | number,
+    permission: boolean
+  }
 
 
 /* PRÁTICA GUIADA - Parte 2
@@ -29,3 +40,45 @@ Vamos continuar nosso sistema de cadastro de usuários criando:
 3. Um array de usuários que permite guardar apenas usuários do tipo Person + Role;
 
 */ 
+
+  //2.2
+type AdminUser = Person & AdminAccount
+
+const userAdmin: AdminUser = {
+  id: "03",
+  name: "Leticia",
+  email: "lerticiacorreia2500@gmai.com",
+  password: "12345678",
+  role: Role.ADMIN,
+  account: "admin1",
+  permission: true
+
+}
+
+type NormalUser = Person & NormalAccount
+
+const userNormal: NormalUser = {
+  id: "04",
+  name: "Gabriel",
+  email: "smenndes.98@gmail.com",
+  password: "87654321",
+  role: Role.NORMAL,
+  account: "normal1",
+  permission: false
+}
+
+
+const normalAccountArray:NormalUser[] = []
+normalAccountArray.push(userNormal)
+
+const adminAccountArray:AdminUser[] = []
+adminAccountArray.push(userAdmin)
+
+type unionTypeToArray = NormalUser | AdminUser
+const arrayUsers: unionTypeToArray[] = []
+arrayUsers.push(userAdmin)
+arrayUsers.push(userNormal)
+
+console.table(adminAccountArray)
+console.table(normalAccountArray)
+console.table(arrayUsers)

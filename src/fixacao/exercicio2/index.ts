@@ -11,36 +11,21 @@ Tendo isso em mente, faça o que se pede:
   b. Faça a tipagem da função.
 */
 
-const posts = [
+type PostDetails = {
+  autor: string,
+  texto: string
+}
+const posts:PostDetails[] = [
   {
     autor: 'Alvo Dumbledore',
     texto: 'Não vale a pena viver sonhando e se esquecer de viver'
-  },
-  {
-    autor: 'Severo Snape',
-    texto: 'Menos 10 pontos para Grifinória'
-  },
-  {
-    autor: 'Hermione Granger',
-    texto: 'É levi-ô-sa, não levio-sá!'
-  },
-  {
-    autor: 'Dobby',
-    texto: 'Dobby é um elfo livre!'
-  },
-  {
-    autor: 'Lord Voldemort',
-    texto: 'Avada Kedavra!'
-  }
+	  }
 ]
 
-
-/*
-function buscarPostsPorAutor(posts, autorInformado) {
+function buscarPostsPorAutor(posts:PostDetails[], autorInformado:string):PostDetails[]{
   return posts.filter(
     (post) => {
       return post.autor === autorInformado
     }
   )
-}
-*/
+    }
